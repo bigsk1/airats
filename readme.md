@@ -1,39 +1,38 @@
-# Sample GitHub New Project Repo
+# AIRATS
 
-This is a sample README.md file for a new GitHub project repository. Feel free to modify and adapt it to your own project needs.
+## ACSII Convertor
+```bash
 
-## Project Title
+  (\,--------'()'--o
+   (_    ___    /~""
+     (_)_)  (_)_)
 
-A brief description of what your project is about and what it does. This should be a clear and concise explanation that captures the essence of your project.
+```
 
-## Table of Contents
+```bash
+into terminal 
 
-1. [Installation](#installation)
-2. [Usage](#usage)
-3. [Contributing](#contributing)
-4. [License](#license)
-5. [Contact](#contact)
+echo -e "\e[32m  _____     ____\e[0m"
+echo -e "\e[32m /      \  |  o |\e[0m"
+echo -e "\e[32m|        |/ ___\|\e[0m"
+echo -e "\e[34m|_________/\e[0m"
+echo -e "\e[34m|_|_| |_|_|\e[0m"
+
+ _____     ____
+ /      \  |  o |
+|        |/ ___\|
+|_________/
+|_|_| |_|_|
+```
+
+This project is a generator for ASCII art. Enter the description of what you want to see. Copy the code!
+
 
 ## Installation
 
 Instructions on how to install and setup your project for users.
 
-```bash
-# Clone the repository
-git clone https://github.com/username/sample-project.git
 
-# Navigate to the project directory
-cd sample-project
-
-# Install dependencies
-npm install
-
-# Run the project
-npm start
-
-# Run tests (if applicable)
-npm test
-```
 ## License
 
 This project is licensed under the MIT License.
