@@ -36,7 +36,11 @@ python3 Main.py rat.jpg -w 50 -ht 25
                               ..               
 ```
 
-Turn any image locally or remotely into ASCII caractors.
+Turn any image locally or remotely into ASCII characters.
+
+</br>
+
+![Rat Image](/rat.jpg)
 
 
 ## Linux Installation
@@ -47,6 +51,7 @@ git clone https://github.com/bigsk1/airats.git
 ```bash
 cd airats
 ```
+Output image to a file
 ```bash
 python Main.py rat.jpg -w 80 -o output.txt
 ```
