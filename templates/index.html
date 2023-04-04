@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Generator</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <style>
+        body {
+            font-family: monospace;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+            margin-bottom: 2rem;
+        }
+        textarea {
+            min-width: 500px;
+            max-width: 100%;
+            height: 600px;
+            white-space: pre;
+            font-family: monospace;
+            background-color: #222;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>ASCII Art Generator</h1>
+    <form method="POST">
+        <label for="image_url">Image URL - jpeg,jpg,png,gif,webp</label>
+        <input type="text" id="image_url" name="image_url" required>
+        <label for="width">Width PX:</label>
+        <input type="number" id="width" name="width" value="100" required>
+        <button type="submit">Generate ASCII Art</button>
+    </form>
+    {% if ascii_image %}
+        <h2>ASCII Art:</h2>
+        <div>
+            <textarea readonly onclick="this.select()">{{ ascii_image }}</textarea>
+        </div>
+    {% endif %}
+</body>
+</html>
+
