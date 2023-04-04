@@ -1,38 +1,86 @@
 # AIRATS
 
-## ACSII Convertor
-```bash
-
-  (\,--------'()'--o
-   (_    ___    /~""
-     (_)_)  (_)_)
-
-```
+## ACSII Image Convertor
+</br>
+Into terminal
 
 ```bash
-into terminal 
+python3 Main.py rat.jpg -w 50 -ht 25
+```
+</br>
 
-echo -e "\e[32m  _____     ____\e[0m"
-echo -e "\e[32m /      \  |  o |\e[0m"
-echo -e "\e[32m|        |/ ___\|\e[0m"
-echo -e "\e[34m|_________/\e[0m"
-echo -e "\e[34m|_|_| |_|_|\e[0m"
-
- _____     ____
- /      \  |  o |
-|        |/ ___\|
-|_________/
-|_|_| |_|_|
+```bash
+                                 
+                    `,^.`:l!<;,^'   .I,           
+                   !-})}rcYCQLYzvt(]?[{;          
+                  "+<+}}{ruYQQQ0QJvft?--`         
+                 ir1_-)jrzvucccJZwQvnj?}(,        
+               .-CZJf[}rcnuzLu/tjnzvrYYcYtl       
+              .1QQCL0XcnrxuO#pCjf/(|fcpXYCx,      
+              ]CLXcccXJYJJXzcrttt({[{|/vLQL/^     
+             +JLcrrnvYLCL0QLJCzt)]?[}}-)COLJ}`    
+            !XZQcjrvXYCQQOO0QJu(}]?{?]?+zO0Lc>    
+           `tL00XnjncvcczXXXvf/|{[])()[]zLCXX{    
+           "rYYJYznxnvczzvuuuj({}]??][)uJCXvct'   
+           ,jXXYzcvnnvzXJJJYYzvf/|fnzYCQYYzuvn^   
+           .~ncccunuvcXJJXXYJ0mOqZZ00QO0JzvuvvI   
+            '?xrrjrzOZJvcvXQOdkhadmQLLLLCznxczI   
+              ~jrjt{)vQcvvut){(c0ZOQLLQQCcnuXX,   
+   ^l>+]{){]_!,l[/)<!!]ncu1__<]tuXCLQOZQYcvXJu'   
+ "+{jj|)fxuzQ0Qzxnx]!!i]cvurftuczCL0OOLJYXYJCt    
+^[n/;.    .^!]rCwqQz|?{}cJLOOZZmpwmmO0QCYYCCC~    
+`-/[^          '!1uQZ0CQOZmpdppkkbkpmOLCLOZOt'    
+ ^_(]~!,^````^""`":~(Jdhao*#*o#MMMhZQC0mmLvj,     
+   :~?}}}1)/nXzuvC0qdh#W8#abdpwmOLXXvYYvt-!I'     
+      .^":;l!!l!i+-{(/tjf}???-}{1?]1(/{?<!:,'     
+                              ..               
 ```
 
-This project is a generator for ASCII art. Enter the description of what you want to see. Copy the code!
+Turn any image locally or remotely into ASCII caractors.
 
 
-## Installation
+## Linux Installation
 
-Instructions on how to install and setup your project for users.
+```bash
+git clone https://github.com/bigsk1/airats.git
+```
+```bash
+cd airats
+```
+```bash
+python Main.py rat.jpg -w 80 -o output.txt
+```
 
+Need to have installed 
 
-## License
+python3
+
+python3 -m pip install Pillow
+
+python3 -m pip install requests
+
+</br>
+
+Supports 
+
+    JPEG: .jpg, .jpeg
+    PNG: .png
+    GIF: .gif
+    BMP: .bmp
+    TIFF: .tif, .tiff
+    ICO: .ico
+    WebP: .webp
+
+Image size can be changed if needed by using 
+
+python3 Main.py your_image.jpg -w 150 -ht 50
+
+or 
+
+python3 Main.py https://your-image-url.jpeg -w 150 -ht 50
+
+</br>
+
+  ## License
 
 This project is licensed under the MIT License.
