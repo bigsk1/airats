@@ -1,28 +1,31 @@
-from flask import Flask, render_template, request
-import Main
+from flask import Flask, render_template, request, jsonify
+from PIL import Image
+from io import BytesIO
+import requests
+
+from Main import image_url_to_ascii  # Import the function from Main.py
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route('/')
 def index():
-    if request.method == "POST":
-        image_url = request.form.get("image_url")
-        width = int(request.form.get("width"))
-        if image_url:
-            image = Main.load_image(image_url)
-            image = Main.resize_image(image, width)
-            greyscale_image = Main.image_to_greyscale(image)
-            ascii_pixels = Main.pixels_to_ascii(greyscale_image)
-            ascii_image = "\n".join(
-                [
-                    ascii_pixels[i : i + greyscale_image.width]
-                    for i in range(0, len(ascii_pixels), greyscale_image.width)
-                ]
-            )
-            return render_template("index.html", ascii_image=ascii_image)
+    return render_template('index.html')
 
-    return render_template("index.html")
+@app.route('/generate', methods=['POST'])
+def generate_ascii():
+    data = request.get_json()
+    image_url = data.get('imageUrl')
+    width = int(data.get('width'))
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    try:
+        response = requests.get(image_url)
+        image = Image.open(BytesIO(response.content))
+        ascii_art = image_url_to_ascii(image, width)
+        return ascii_art
+    except Exception as e:
+        print(e)
+        return 'Error generating ASCII art', 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)
 

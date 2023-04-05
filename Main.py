@@ -39,6 +39,13 @@ def load_image(image_source):
             print(f"Error: {e}")
             sys.exit(1)
 
+def image_url_to_ascii(image, new_width, new_height=None):
+    image = resize_image(image, new_width, new_height)
+    greyscale_image = image_to_greyscale(image)
+    ascii_pixels = pixels_to_ascii(greyscale_image)
+    ascii_image = "\n".join([ascii_pixels[i: i + greyscale_image.width] for i in range(0, len(ascii_pixels), greyscale_image.width)])
+    return ascii_image
+
 def main():
     parser = argparse.ArgumentParser(description="Convert images to ASCII art.")
     parser.add_argument("image_source", help="Path or URL to the input image.")
@@ -49,10 +56,7 @@ def main():
     args = parser.parse_args()
 
     image = load_image(args.image_source)
-    image = resize_image(image, args.width, args.height)
-    greyscale_image = image_to_greyscale(image)
-    ascii_pixels = pixels_to_ascii(greyscale_image)
-    ascii_image = "\n".join([ascii_pixels[i : i + greyscale_image.width] for i in range(0, len(ascii_pixels), greyscale_image.width)])
+    ascii_image = image_url_to_ascii(image, args.width, args.height)
 
     if args.output:
         with open(args.output, "w") as f:
