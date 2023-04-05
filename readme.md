@@ -9,7 +9,7 @@ Both Web and Command Line usage
 
 </br>
 
-![web](/web.jpg)
+![fish](/images/fish.jpg)
 
 
 
@@ -107,13 +107,13 @@ python3 Main.py https://your-image-url.jpeg -w 150 -ht 50
 Terminal
 
 ```bash
-python3 Main.py rat.jpg -w 50 -ht 25
+python3 Main.py images/rat.jpg -w 50 -ht 25
 ```
 </br>
 
 Output image to a file
 ```bash
-python Main.py rat.jpg -w 80 -o output.txt
+python3 Main.py images/rat.jpg -w 80 -o output.txt
 ```
 
 </br>
@@ -128,7 +128,7 @@ Supports
     ICO: .ico
     WebP: .webp
 
-![Rat Image](/rat.jpg)
+![Rat Image](/images/rat.jpg)
 
 ```bash
                                  
