@@ -1,6 +1,6 @@
 # AIRATS
 
-## ACSII Image Convertor
+## ASCII Image Convertor
 </br>
 A simple Flask web app and command-line tool to generate ASCII art from an image URL or locally.
 
@@ -49,7 +49,7 @@ pip install -r requirements.txt
 </br>
 </br>
 
-## Install on Ubuntu 22.04+
+## Ubuntu 22.04+
 ### If you don't want the virtual enviroment just make sure you have installed 
 </br>
 
@@ -109,7 +109,7 @@ flask run --host=0.0.0.0
 
 </br>
 
-Run any of the following commands:
+Run any of the following commands from the airats directory:
 
 python3 Main.py <image_url> [-w WIDTH] [-ht HEIGHT]
 
