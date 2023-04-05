@@ -19,7 +19,9 @@ Turn any image locally or remotely into ASCII characters.
 </br>
 
 
-## Installation
+# Installation
+
+## Linux
 </br>
 
 1. Clone the repo
@@ -46,7 +48,41 @@ pip install -r requirements.txt
 ```
 </br>
 
-## Usage
+</br>
+
+## Install on Ubuntu 22.04+
+### If you don't want the virtual enviroment just make sure you have installed 
+</br>
+
+```bash
+sudo apt install python3 && sudo apt install python3-pip && sudo apt install python3-flask && python3 -m pip install Pillow && python3 -m pip install requests
+```
+run with python3 app.py in the airats folder
+
+```bash
+python3 app.py
+```
+Open a web browser and visit [http://localhost:5000](http://localhost:5000) to access the app.
+
+</br>
+
+## Windows 64bit install - web app only
+</br>
+
+Download .exe from releases here: https://github.com/bigsk1/airats/releases/tag/v1.0
+
+or build your own by cloning the win64 branch here:
+
+```bash
+git clone --single-branch --branch win64 https://github.com/bigsk1/airats.git
+```
+see the requirements.txt for what dependencies are needed
+
+</br>
+
+# Usage
+
+## Linux
 
 ### Web Interface virtual environment in Python
 
@@ -65,21 +101,7 @@ flask run --host=0.0.0.0
 
 3. Enter an image URL and width, then click "Generate ASCII Art" to see the result.
 
-</br>
 
-## Install on Ubuntu 22.04+
-### If you don't want the virtual enviroment just make sure you have installed 
-</br>
-
-```bash
-sudo apt install python3 && sudo apt install python3-pip && sudo apt install python3-flask && python3 -m pip install Pillow && python3 -m pip install requests
-```
-run with python3 app.py in the airats folder
-
-```bash
-python3 app.py
-```
-Open a web browser and visit [http://localhost:5000](http://localhost:5000) to access the app.
 
 </br>
 
