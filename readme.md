@@ -8,6 +8,7 @@ A simple Flask web app and command-line tool to generate ASCII art from an image
 Both Web and Command Line usage
 
 </br>
+</br>
 
 ![fish](/images/fish.jpg)
 
@@ -132,29 +133,29 @@ Supports
 
 ```bash
                                  
-                    `,^.`:l!<;,^'   .I,           
-                   !-})}rcYCQLYzvt(]?[{;          
-                  "+<+}}{ruYQQQ0QJvft?--`         
-                 ir1_-)jrzvucccJZwQvnj?}(,        
-               .-CZJf[}rcnuzLu/tjnzvrYYcYtl       
-              .1QQCL0XcnrxuO#pCjf/(|fcpXYCx,      
-              ]CLXcccXJYJJXzcrttt({[{|/vLQL/^     
-             +JLcrrnvYLCL0QLJCzt)]?[}}-)COLJ}`    
-            !XZQcjrvXYCQQOO0QJu(}]?{?]?+zO0Lc>    
-           `tL00XnjncvcczXXXvf/|{[])()[]zLCXX{    
-           "rYYJYznxnvczzvuuuj({}]??][)uJCXvct'   
-           ,jXXYzcvnnvzXJJJYYzvf/|fnzYCQYYzuvn^   
-           .~ncccunuvcXJJXXYJ0mOqZZ00QO0JzvuvvI   
-            '?xrrjrzOZJvcvXQOdkhadmQLLLLCznxczI   
-              ~jrjt{)vQcvvut){(c0ZOQLLQQCcnuXX,   
-   ^l>+]{){]_!,l[/)<!!]ncu1__<]tuXCLQOZQYcvXJu'   
- "+{jj|)fxuzQ0Qzxnx]!!i]cvurftuczCL0OOLJYXYJCt    
-^[n/;.    .^!]rCwqQz|?{}cJLOOZZmpwmmO0QCYYCCC~    
-`-/[^          '!1uQZ0CQOZmpdppkkbkpmOLCLOZOt'    
- ^_(]~!,^````^""`":~(Jdhao*#*o#MMMhZQC0mmLvj,     
-   :~?}}}1)/nXzuvC0qdh#W8#abdpwmOLXXvYYvt-!I'     
-      .^":;l!!l!i+-{(/tjf}???-}{1?]1(/{?<!:,'     
-                              ..               
+                    `,^.`:l!<;,^'   .I, 
+                   !-})}rcYCQLYzvt(]?[{; 
+                  "+<+}}{ruYQQQ0QJvft?--` 
+                 ir1_-)jrzvucccJZwQvnj?}(, 
+               .-CZJf[}rcnuzLu/tjnzvrYYcYtl 
+              .1QQCL0XcnrxuO#pCjf/(|fcpXYCx, 
+              ]CLXcccXJYJJXzcrttt({[{|/vLQL/^ 
+             +JLcrrnvYLCL0QLJCzt)]?[}}-)COLJ}`
+            !XZQcjrvXYCQQOO0QJu(}]?{?]?+zO0Lc> 
+           `tL00XnjncvcczXXXvf/|{[])()[]zLCXX{
+           "rYYJYznxnvczzvuuuj({}]??][)uJCXvct'
+           ,jXXYzcvnnvzXJJJYYzvf/|fnzYCQYYzuvn^
+           .~ncccunuvcXJJXXYJ0mOqZZ00QO0JzvuvvI
+            '?xrrjrzOZJvcvXQOdkhadmQLLLLCznxczI
+              ~jrjt{)vQcvvut){(c0ZOQLLQQCcnuXX,
+   ^l>+]{){]_!,l[/)<!!]ncu1__<]tuXCLQOZQYcvXJu'
+ "+{jj|)fxuzQ0Qzxnx]!!i]cvurftuczCL0OOLJYXYJCt 
+^[n/;.    .^!]rCwqQz|?{}cJLOOZZmpwmmO0QCYYCCC~
+`-/[^          '!1uQZ0CQOZmpdppkkbkpmOLCLOZOt'
+ ^_(]~!,^````^""`":~(Jdhao*#*o#MMMhZQC0mmLvj, 
+   :~?}}}1)/nXzuvC0qdh#W8#abdpwmOLXXvYYvt-!I'
+      .^":;l!!l!i+-{(/tjf}???-}{1?]1(/{?<!:,'
+                              ..            
 ```
 
 </br>
