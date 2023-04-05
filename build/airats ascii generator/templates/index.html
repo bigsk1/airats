@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>ASCII Art Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #ffffff;
+            text-align: center;
+        }
+        input, label {
+            margin: 5px;
+        }
+        pre {
+            white-space: pre;
+            font-family: monospace;
+            background-color: #222;
+            color: #ffffff;
+            max-width: 100%;
+            display: inline-block;
+            text-align: left;
+            margin: 10px 0;
+        }
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ASCII Art Generator</h1>
+    <form id="ascii-form">
+        <div class="center">
+            <label for="image-url">Image URL:</label>
+            <input type="text" id="image-url" name="image-url" required>
+        </div>
+        <div class="center">
+            <label for="width">Width:</label>
+            <input type="number" id="width" name="width" required>
+        </div>
+        <div class="center">
+            <button type="submit">Generate ASCII Art</button>
+        </div>
+    </form>
+    <pre id="ascii-output"></pre>
+
+    <script>
+        const form = document.getElementById('ascii-form');
+        const asciiOutput = document.getElementById('ascii-output');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const imageUrl = document.getElementById('image-url').value;
+            const width = document.getElementById('width').value;
+            
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ imageUrl, width }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const asciiArt = await response.text();
+                asciiOutput.textContent = asciiArt;
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        });
+    </script>
+</body>
+</html>
