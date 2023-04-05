@@ -48,6 +48,15 @@ pip install -r requirements.txt
 ```
 </br>
 
+run with python3 app.py in the airats folder
+
+```bash
+python3 app.py
+```
+Open a web browser and visit [http://localhost:5000](http://localhost:5000) to access the app.
+
+</br>
+
 </br>
 
 ## Install on Ubuntu 22.04+
@@ -66,7 +75,7 @@ Open a web browser and visit [http://localhost:5000](http://localhost:5000) to a
 
 </br>
 
-## Windows 64bit install - web app only
+## Windows 64bit install
 </br>
 
 Download .exe from releases here: https://github.com/bigsk1/airats/releases/tag/v1.0
@@ -105,7 +114,7 @@ flask run --host=0.0.0.0
 
 </br>
 
-## Command-Line Interface
+## Command Line
 
 </br>
 
@@ -121,13 +130,14 @@ python3 Main.py <image_url> [-w WIDTH] [-ht HEIGHT]
 
 You can also run an image you have locally using:
 
+
 python3 Main.py your_image.jpg -w 150 -ht 50
 
 or 
 
 python3 Main.py https://your-image-url.jpeg -w 150 -ht 50
 
-Terminal
+
 
 ```bash
 python3 Main.py images/rat.jpg -w 50 -ht 25
