@@ -47,16 +47,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 </br>
-
-run with python3 app.py in the airats folder
-
-```bash
-python3 app.py
-```
-Open a web browser and visit [http://localhost:5000](http://localhost:5000) to access the app.
-
-</br>
-
 </br>
 
 ## Install on Ubuntu 22.04+
@@ -73,6 +63,7 @@ python3 app.py
 ```
 Open a web browser and visit [http://localhost:5000](http://localhost:5000) to access the app.
 
+</br>
 </br>
 
 ## Windows 64bit install
