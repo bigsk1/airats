@@ -19,6 +19,8 @@ Turn any image locally or remotely into ASCII characters.
 
 
 ## Installation
+</br>
+
 1. Clone the repo
 ```bash
 git clone https://github.com/bigsk1/airats.git
@@ -29,23 +31,23 @@ cd airats
 
 2. (Optional) Create a virtual environment and activate it:
 
-</br>
-
+```bash
 python3 -m venv venv
 
 source venv/bin/activate
-
+```
 </br>
 
 3. Install the required Python packages:
 
+```bash
 pip install -r requirements.txt
-
+```
 </br>
 
 ## Usage
 
-### Web Interface
+### Web Interface virtual environment in Python
 
 </br>
 
@@ -64,16 +66,13 @@ flask run --host=0.0.0.0
 
 </br>
 
-
-## If you don't want the virtual enviroment just make sure you have installed 
+## Install on Ubuntu 22.04+
+### If you don't want the virtual enviroment just make sure you have installed 
 </br>
 
-python3
-
-python3 -m pip install Pillow
-
-python3 -m pip install requests
-
+```bash
+sudo apt install python3 && sudo apt install python3-pip && sudo apt install python3-flask && python3 -m pip install Pillow && python3 -m pip install requests
+```
 run with python3 app.py in the airats folder
 
 ```bash
@@ -97,7 +96,7 @@ python3 Main.py <image_url> [-w WIDTH] [-ht HEIGHT]
 
 </br>
 
-You can also run an image locally using
+You can also run an image you have locally using:
 
 python3 Main.py your_image.jpg -w 150 -ht 50
 
@@ -105,7 +104,7 @@ or
 
 python3 Main.py https://your-image-url.jpeg -w 150 -ht 50
 
-Into terminal
+Terminal
 
 ```bash
 python3 Main.py rat.jpg -w 50 -ht 25
