@@ -108,18 +108,27 @@ python3 Main.py images/rat.jpg -w 50 -ht 25
 ```
 
 ## Build the app
+see requirements.txt for dependency's
 
 </br>
 
-pip install cx_Freeze
+```bash
+pip install -r requirements.txt
+```
 
-python setup.py build
+```bash
+python3 setup.py build
+```
 
-cd build\exe.win-amd64-3.10  ( or whatever your new folder is )
+```bash 
+cd build\exe.win-amd64-3.10  
+```
+( or whatever your new folder is )
 
+```bash
 .\app.exe
+```
 
-see requirements.txt for dependency's
 
 Supports 
 
