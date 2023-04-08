@@ -1,6 +1,7 @@
 # AIRATS  
 
-## ASCII Image Convertor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+## ASCII Image Convertor 
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 </br>
 A simple Flask web app and command-line tool to generate ASCII art from an image URL or locally.
 
@@ -22,7 +23,8 @@ Turn any image locally or remotely into ASCII characters.
 # Installation
 
 ## Linux
-</br>
+
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
 1. Clone the repo
 ```bash
@@ -50,6 +52,7 @@ pip install -r requirements.txt
 </br>
 
 ## Ubuntu 22.04+
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ### If you don't want the virtual enviroment just make sure you have installed 
 </br>
 
@@ -67,11 +70,13 @@ Open a web browser and visit [http://localhost:5000](http://localhost:5000) to a
 </br>
 
 ## Windows 64bit install
-</br>
+![Windows 11](https://img.shields.io/badge/Windows%2011-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white)
 
 Download .exe from releases here: https://github.com/bigsk1/airats/releases/tag/v1.0
 
-or build your own by cloning the win64 branch here:
+You will most likely get a warning when trying to launch because it is not a signed .exe this is normal.
+
+(optional)  build your own by cloning the win64 branch here:
 
 ```bash
 git clone --single-branch --branch win64 https://github.com/bigsk1/airats.git
