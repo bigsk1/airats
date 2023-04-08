@@ -1,5 +1,5 @@
 # AIRATS
-
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Windows 11](https://img.shields.io/badge/Windows%2011-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white)
 ## ASCII Image Convertor
 
 A simple Flask web app  to generate ASCII art from an image URL
@@ -34,6 +34,8 @@ Open a web browser and visit [http://localhost:8081] or (http://127.0.0.1:8081) 
 </br>
 
 build your own by cloning the win64 branch here:
+
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
 ```bash
 git clone --single-branch --branch win64 https://github.com/bigsk1/airats.git
@@ -95,7 +97,11 @@ or
 
 python3 Main.py https://your-image-url.jpeg -w 150 -ht 50
 
-Terminal
+</br>
+
+## Terminal
+
+![Windows Terminal](https://img.shields.io/badge/Windows%20Terminal-%234D4D4D.svg?style=for-the-badge&logo=windows-terminal&logoColor=white)
 
 ```bash
 python3 Main.py images/rat.jpg -w 50 -ht 25
