@@ -189,6 +189,6 @@ Supports
 
 </br>
 
-  ## License
+<a href='https://github.com/bigsk1/airats/blob/master/LICENSE'>LICENSE</a>
 
-This project is licensed under the MIT License.
+This project is licensed under MIT License.
