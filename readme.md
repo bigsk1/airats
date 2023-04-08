@@ -1,6 +1,6 @@
 # AIRATS
 
-## ACSII Image Convertor
+## ASCII Image Convertor
 
 A simple Flask web app  to generate ASCII art from an image URL
 
@@ -77,7 +77,7 @@ D:\github_airats\airats-win64> python3 Main.py images/rat.jpg -w 50 -ht 25
 
 </br>
 
-Run any of the following commands:
+Run any of the following commands from the airats directory:
 
 python3 Main.py <image_url> [-w WIDTH] [-ht HEIGHT]
 
