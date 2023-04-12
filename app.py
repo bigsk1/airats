@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, jsonify
 from PIL import Image
 from io import BytesIO
 import requests
+import logging
+
+logging.basicConfig(filename='airats.log', level=logging.WARNING)
 
 from Main import image_url_to_ascii  # Import the function from Main.py
 
