@@ -82,7 +82,7 @@ pip install -r requirements.txt
 </br>
 
 ```bash
-sudo apt install python3 && sudo apt install python3-pip && sudo apt install python3-flask && python3 -m pip install Pillow && python3 -m pip install requests
+sudo apt install python3 && sudo apt install python3-pip && sudo apt install python3-flask && python3 -m pip install Pillow && python3 -m pip install requests && python3 -m pip install gunicorn
 ```
 run with python3 app.py in the airats folder
 
