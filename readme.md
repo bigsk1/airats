@@ -22,6 +22,30 @@ Turn any image locally or remotely into ASCII characters.
 
 # Installation
 
+## Docker
+
+```bash
+docker pull bigsk1/airats:latest
+```
+or
+Build docker image in project root with Dockerfile
+
+Clone the repo then
+
+```bash
+cd airats
+```
+
+
+```bash
+docker build -t <your_image_name> .
+```
+
+```bash
+docker run -d -p 5000:5000 <your_image_name>
+```
+
+
 ## Linux
 
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
