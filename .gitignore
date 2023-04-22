@@ -6,3 +6,18 @@ __pycache__/
 *.sqlite
 *.env
 airats.log
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+*.log
+*.pyc
+
+# Editors
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

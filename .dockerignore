@@ -1,0 +1,10 @@
+# Ignore files and directories that are not needed in the Docker image
+.git
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info
+airats.log
