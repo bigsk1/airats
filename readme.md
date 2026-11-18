@@ -1,227 +1,72 @@
-# AIRATS  
+# ASCII Studio
 
-## ASCII Image Convertor 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-</br>
-A simple Flask web app and command-line tool to generate ASCII art from an image URL or locally.
+Turn images and words into ASCII art. Upload or crop a photo, or create lettering from a typed phrase. Then copy the artwork, download a text file, or preview it as a screensaver.
 
-</br>
-Both Web and Command Line usage
+## Run locally
 
-</br>
-</br>
+Requires Python 3.12 or newer. With [uv](https://docs.astral.sh/uv/) installed, run from the repository root.
 
-![fish](/images/fish.jpg)
+```sh
+uv run app.py
+```
 
+### Manual virtual environment
 
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python app.py
+```
 
-Turn any image locally or remotely into ASCII characters.
+Open [ASCII Studio](http://127.0.0.1:5000). On Windows, activate the environment with `.venv\Scripts\Activate.ps1`.
 
-</br>
+The browser downloads images from URLs. If a site blocks cross-origin access or requires a login, save the image and upload it as a file. The web app accepts JPEG, PNG, GIF, BMP, TIFF, ICO, and WebP files up to 8 MiB and 16 megapixels. It uses the first frame of animated images.
 
+Open **Crop image** and drag a box around the area you want to keep, or enter the percentage to trim from each edge. The ASCII preview updates as you adjust the crop, contrast, width, or character palette. Click **Generate ASCII** to load a pasted URL.
 
-# Installation
+**Balanced** is the default character palette and skips backticks and carets. Try **Dots** for round marks, **Linework** for strokes, or **Blocks** for shaded Unicode characters (`█▓▒░`). **Detailed** is the original palette.
+
+**Preview font** and **Preview color** affect the browser artwork, including the screensaver preview. The bundled faces are Typewriter (Liberation Mono), JetBrains Mono, and Departure Mono. The local Nerd Font option uses an installed JetBrains Mono, Cascadia Code, or Hack Nerd Font when available and falls back to JetBrains Mono. If your Nerd Font is based on JetBrains Mono, the regular letters and punctuation will look similar. Omarchy picks its own terminal font and effects.
+
+## Create text artwork
+
+Select **Text** and type a word or phrase. Use line breaks to stack words. **Lettering font** shapes the letters, and **Character palette** picks the glyphs that draw them. **Text height** and **Width** control the size in rows and columns, so you can stretch or condense the lettering to suit your display.
+
+Choose **Solid** or **Outline**, then adjust **Contrast** to make strokes lighter or denser. **Splatter** adds speckles near the letters. At 0%, the background stays blank.
+
+The screensaver preview centers the lettering horizontally and vertically. For example, **65 rows** on an **88-row** screen leaves 23 rows of vertical space, provided the artwork also fits within the screen’s columns. The app scales the design down proportionally if either dimension exceeds the terminal grid.
+
+## Use your art as an Omarchy screensaver
+
+Run the app directly on your Omarchy desktop as your regular user:
+
+```sh
+uv run app.py --omarchy
+```
+
+With a manual virtual environment, use `python app.py --omarchy`.
+
+Open [ASCII Studio](http://127.0.0.1:5000), generate artwork and click **Set as Omarchy screensaver**. The app estimates a terminal grid from your active displays using Omarchy's stock font size. Adjust **Columns** and **Rows** if your fullscreen terminal uses a different grid. The preview centers the fitted art on that grid so you can see how much of the screen it will fill.
+
+Click **Install fitted artwork** to save the same text shown in that preview. On compatible Omarchy installations, this saves to `~/.config/omarchy/branding/screensaver.txt` and keeps a uniquely named backup beside it. Launch it immediately with `omarchy launch screensaver force`.
+
+The install button is available in explicit local Omarchy mode. From Docker or a remote instance, download the text file and open the screensaver editor on the desktop with `omarchy branding screensaver text`.
+
+## Command line
+
+```sh
+python Main.py images/fish.jpg -w 80 -ht 30 -o artwork.txt
+python Main.py https://example.com/image.jpg -w 100 --palette classic --invert
+```
+
+Width and height accept 1–240 characters. If you omit the height, it is calculated from the image aspect ratio and the result is fitted within the output limits.
 
 ## Docker
 
-```bash
-docker pull bigsk1/airats:latest
-```
-or
-Build docker image in project root with Dockerfile
-
-Clone the repo then
-
-```bash
-cd airats
+```sh
+docker build -t ascii-studio .
+docker run --rm -p 127.0.0.1:5000:5000 ascii-studio
 ```
 
-
-```bash
-docker build -t <your_image_name> .
-```
-
-```bash
-docker run -d -p 5000:5000 <your_image_name>
-```
-
-
-## Linux
-
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-
-
-1. Clone the repo
-```bash
-git clone https://github.com/bigsk1/airats.git
-```
-```bash
-cd airats
-```
-
-2. (Optional) Create a virtual environment and activate it:
-
-```bash
-python3 -m venv venv
-
-source venv/bin/activate
-```
-</br>
-
-3. Install the required Python packages:
-
-```bash
-pip install -r requirements.txt
-```
-</br>
-</br>
-
-## Ubuntu 22.04+
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-### If you don't want the virtual enviroment just make sure you have installed 
-</br>
-
-```bash
-sudo apt install python3 && sudo apt install python3-pip && sudo apt install python3-flask && python3 -m pip install Pillow && python3 -m pip install requests && python3 -m pip install gunicorn
-```
-run with python3 app.py in the airats folder
-
-```bash
-python3 app.py
-```
-Open a web browser and visit [http://localhost:5000](http://localhost:5000) to access the app.
-
-</br>
-</br>
-
-## Devcontainer VScode
-
-Open in devcontainer and run! Find on localhost:5000
-
----
-
-
-</br>
-
-## Windows 64bit install
-![Windows 11](https://img.shields.io/badge/Windows%2011-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white)
-
-Download .exe from releases here: https://github.com/bigsk1/airats/releases/tag/v1.0
-
-You will most likely get a warning when trying to launch because it is not a signed .exe this is normal.
-
-(optional)  build your own by cloning the win64 branch here:
-
-```bash
-git clone --single-branch --branch win64 https://github.com/bigsk1/airats.git
-```
-see the requirements.txt for what dependencies are needed
-
-</br>
-
-# Usage
-
-## Linux
-
-### Web Interface virtual environment in Python
-
-</br>
-
-1. Run the Flask app (optional):
-
-```bash
-export FLASK_APP=app.py
-```
-```bash
-flask run --host=0.0.0.0
-```
-
-2. Open a web browser and visit [http://localhost:5000](http://localhost:5000) to access the app.
-
-3. Enter an image URL and width, then click "Generate ASCII Art" to see the result.
-
-
-
-</br>
-
-## Command Line
-
-</br>
-
-Run any of the following commands from the airats directory:
-
-python3 Main.py <image_url> [-w WIDTH] [-ht HEIGHT]
-
-</br>
-
-### Image size can be changed as needed
-
-</br>
-
-You can also run an image you have locally using:
-
-
-python3 Main.py your_image.jpg -w 150 -ht 50
-
-or 
-
-python3 Main.py https://your-image-url.jpeg -w 150 -ht 50
-
-
-
-```bash
-python3 Main.py images/rat.jpg -w 50 -ht 25
-```
-</br>
-
-Output image to a file
-```bash
-python3 Main.py images/rat.jpg -w 80 -o output.txt
-```
-
-</br>
-
-Supports 
-
-    JPEG: .jpg, .jpeg
-    PNG: .png
-    GIF: .gif
-    BMP: .bmp
-    TIFF: .tif, .tiff
-    ICO: .ico
-    WebP: .webp
-
-![Rat Image](/images/rat.jpg)
-
-```bash
-                                 
-                    `,^.`:l!<;,^'   .I, 
-                   !-})}rcYCQLYzvt(]?[{; 
-                  "+<+}}{ruYQQQ0QJvft?--` 
-                 ir1_-)jrzvucccJZwQvnj?}(, 
-               .-CZJf[}rcnuzLu/tjnzvrYYcYtl 
-              .1QQCL0XcnrxuO#pCjf/(|fcpXYCx, 
-              ]CLXcccXJYJJXzcrttt({[{|/vLQL/^ 
-             +JLcrrnvYLCL0QLJCzt)]?[}}-)COLJ}`
-            !XZQcjrvXYCQQOO0QJu(}]?{?]?+zO0Lc> 
-           `tL00XnjncvcczXXXvf/|{[])()[]zLCXX{
-           "rYYJYznxnvczzvuuuj({}]??][)uJCXvct'
-           ,jXXYzcvnnvzXJJJYYzvf/|fnzYCQYYzuvn^
-           .~ncccunuvcXJJXXYJ0mOqZZ00QO0JzvuvvI
-            '?xrrjrzOZJvcvXQOdkhadmQLLLLCznxczI
-              ~jrjt{)vQcvvut){(c0ZOQLLQQCcnuXX,
-   ^l>+]{){]_!,l[/)<!!]ncu1__<]tuXCLQOZQYcvXJu'
- "+{jj|)fxuzQ0Qzxnx]!!i]cvurftuczCL0OOLJYXYJCt 
-^[n/;.    .^!]rCwqQz|?{}cJLOOZZmpwmmO0QCYYCCC~
-`-/[^          '!1uQZ0CQOZmpdppkkbkpmOLCLOZOt'
- ^_(]~!,^````^""`":~(Jdhao*#*o#MMMhZQC0mmLvj, 
-   :~?}}}1)/nXzuvC0qdh#W8#abdpwmOLXXvYYvt-!I'
-      .^":;l!!l!i+-{(/tjf}???-}{1?]1(/{?<!:,'
-                              ..            
-```
-
-</br>
-
-<a href='https://github.com/bigsk1/airats/blob/master/LICENSE'>LICENSE</a>
-
-This project is licensed under MIT License.
+See [LICENSE](LICENSE) for the MIT license. The bundled fonts have their own [Liberation Mono](static/fonts/Liberation-Mono-OFL.txt), [JetBrains Mono](static/fonts/JetBrains-Mono-OFL.txt), and [Departure Mono](static/fonts/Departure-Mono-OFL.txt) licenses.

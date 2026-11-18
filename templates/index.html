@@ -1,85 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ASCII Studio</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <title>ASCII Art Generator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #222;
-            color: #ffffff;
-            text-align: center;
-        }
-        input, label {
-            margin: 5px;
-        }
-        pre {
-            white-space: pre;
-            font-family: monospace;
-            background-color: #222;
-            color: #ffffff;
-            max-width: 100%;
-            display: inline-block;
-            text-align: left;
-            margin: 10px 0;
-        }
-        .center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='studio.css') }}">
+    <script src="{{ url_for('static', filename='studio.js') }}" defer></script>
 </head>
 <body>
-    <h1>ASCII Art Generator</h1>
-    <form id="ascii-form">
-        <div class="center">
-            <label for="image-url">Image URL:</label>
-            <input type="text" id="image-url" name="image-url" required>
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark" aria-hidden="true">&gt;_</span> ASCII Studio</a>
+    </header>
+    <main>
+        <div class="intro">
+            <h1>Turn images and words into ASCII.</h1>
+            <p>Create text art for terminals and screensavers.</p>
         </div>
-        <div class="center">
-            <label for="width">Width:</label>
-            <input type="number" id="width" name="width" required>
+        <div class="workspace">
+            <section class="settings" aria-labelledby="settings-title">
+                <h2 id="settings-title">Source &amp; style</h2>
+                <form id="studio-form" data-sample="{{ url_for('sample') }}">
+                    <fieldset id="settings-fields" aria-labelledby="settings-title">
+                        <div class="source-mode" role="radiogroup" aria-label="Artwork source">
+                            <input id="mode-image" name="mode" type="radio" value="image" checked>
+                            <label for="mode-image">Image</label>
+                            <input id="mode-text" name="mode" type="radio" value="text">
+                            <label for="mode-text">Text</label>
+                        </div>
+                        <fieldset id="image-fields" class="source-fields" aria-label="Image settings">
+                            <div class="field">
+                                <button id="browse-image" type="button" aria-describedby="source-filename">Browse image</button>
+                                <input id="image" type="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tif,.tiff,.ico,.webp" hidden>
+                                <small id="source-filename">No file selected</small>
+                            </div>
+                            <div class="field">
+                                <label for="image-url">Or paste an image URL</label>
+                                <input id="image-url" type="url" placeholder="https://…">
+                                <small>The image host must allow browser downloads.</small>
+                            </div>
+                            <details class="crop">
+                                <summary>Crop image</summary>
+                                <p id="crop-help">Drag to select what to keep, or enter the percentage to trim from each edge.</p>
+                                <div id="crop-frame" hidden>
+                                    <img id="source-preview" alt="Source image" draggable="false">
+                                    <div id="crop-box" aria-hidden="true"></div>
+                                </div>
+                                <p id="crop-preview-status" hidden>Image preview is unavailable. You can still trim the edges below.</p>
+                                <div class="crop-edges">
+                                    {% for edge in ('top', 'left', 'right', 'bottom') %}
+                                        <div>
+                                            <label for="crop-{{ edge }}">{{ edge | title }} (%)</label>
+                                            <input id="crop-{{ edge }}" name="crop_{{ edge }}" type="number"
+                                                   min="0" max="99" step="1" value="0" required>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <button id="reset-crop" type="button">Reset crop</button>
+                            </details>
+                            <label class="toggle"><input id="invert" name="invert" value="true" type="checkbox" checked> Invert tones</label>
+                        </fieldset>
+                        <fieldset id="text-fields" class="source-fields" aria-label="Lettering settings" hidden disabled>
+                            <div class="field">
+                                <label for="phrase">Word or phrase</label>
+                                <textarea id="phrase" name="phrase" rows="2" maxlength="{{ max_text }}" aria-describedby="phrase-help" required>bigsk1</textarea>
+                                <small id="phrase-help">Use line breaks to stack words.</small>
+                            </div>
+                            <div class="field">
+                                <label for="lettering">Lettering font</label>
+                                <select id="lettering" name="lettering">
+                                    {% for font in text_fonts %}
+                                        <option>{{ font }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="stroke">Stroke</label>
+                                <select id="stroke" name="stroke">
+                                    <option value="solid">Solid</option>
+                                    <option value="outline">Outline</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="text-rows">Text height <output id="text-rows-value" for="text-rows">32 rows</output></label>
+                                <input id="text-rows" name="text_rows" type="range" min="{{ min_text_rows }}" max="{{ max_rows }}" value="32">
+                            </div>
+                            <div class="field">
+                                <label for="splatter">Splatter <output id="splatter-value" for="splatter">0%</output></label>
+                                <input id="splatter" name="splatter" type="range" min="0" max="100" step="5" value="0">
+                            </div>
+                        </fieldset>
+                        <div class="field">
+                            <label for="contrast">Contrast <output id="contrast-value" for="contrast">100%</output></label>
+                            <input id="contrast" name="contrast" type="range" min="{{ min_contrast }}"
+                                   max="{{ max_contrast }}" step="5" value="100">
+                        </div>
+                        <div class="field">
+                            <label for="width">Width <output id="width-value" for="width">96 columns</output></label>
+                            <input id="width" name="width" type="range" min="12" max="{{ max_columns }}" value="96">
+                        </div>
+                        <div class="field">
+                            <label for="palette">Character palette</label>
+                            <select id="palette" name="palette">
+                                {% for palette in palettes %}
+                                    <option value="{{ palette }}"{% if palette == default_palette %} selected{% endif %}>{{ palette | title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button class="primary" type="submit">Generate ASCII</button>
+                        <button id="sample" class="subtle" type="button">Use sample image</button>
+                    </fieldset>
+                </form>
+            </section>
+            <section class="result" aria-labelledby="result-title">
+                <header class="result-header">
+                    <h2 id="result-title">ASCII preview</h2>
+                    <div class="preview-settings">
+                        <span id="dimensions"></span>
+                        <div class="preview-option">
+                            <label for="preview-font">Preview font</label>
+                            <select id="preview-font">
+                                <option value="typewriter">Typewriter</option>
+                                <option value="jetbrains">JetBrains Mono</option>
+                                <option value="nerd">Nerd Font (local)</option>
+                                <option value="departure">Departure Mono</option>
+                            </select>
+                        </div>
+                        <div class="preview-option">
+                            <label for="preview-color">Preview color</label>
+                            <input id="preview-color" type="color" value="#d8ff89">
+                        </div>
+                    </div>
+                </header>
+                <div class="canvas" id="canvas">
+                    <pre id="art" aria-label="Generated ASCII artwork"></pre>
+                </div>
+                <footer class="actions">
+                    <button id="download" type="button" disabled>Download .txt</button>
+                    <button id="copy" type="button" disabled>Copy</button>
+                    <button id="preview" type="button" disabled>Screensaver preview</button>
+                    {% if install_token %}
+                        <button id="install" type="button" disabled>Set as Omarchy screensaver</button>
+                    {% endif %}
+                </footer>
+                <p id="status" role="status" aria-live="polite"></p>
+            </section>
         </div>
-        <div class="center">
-            <button type="submit">Generate ASCII Art</button>
+    </main>
+    <dialog id="screensaver-preview" aria-labelledby="preview-title">
+        <header>
+            <h2 id="preview-title">Screensaver preview</h2>
+            <form method="dialog"><button>Close</button></form>
+        </header>
+        <fieldset id="screen-grid" data-cell-ratio="{{ screen_cell_ratio }}">
+            <legend>Terminal grid</legend>
+            <div class="screen-controls">
+                <label for="screen-columns">Columns</label>
+                <input id="screen-columns" type="number" min="1" max="{{ max_columns }}" value="{{ screen_grid[0] }}" required>
+                <label for="screen-rows">Rows</label>
+                <input id="screen-rows" type="number" min="1" max="{{ max_rows }}" value="{{ screen_grid[1] }}" required>
+            </div>
+            <small>{% if estimated_grid %}Estimated from your active displays.{% else %}Adjust the grid to match your fullscreen terminal.{% endif %}</small>
+        </fieldset>
+        <div class="screen-stage" id="screen-stage">
+            <div class="screen-frame" id="preview-canvas"><pre id="preview-art" aria-label="Fitted screensaver artwork"></pre></div>
         </div>
-    </form>
-    <pre id="ascii-output"></pre>
-
-    <script>
-        const form = document.getElementById('ascii-form');
-        const asciiOutput = document.getElementById('ascii-output');
-
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const imageUrl = document.getElementById('image-url').value;
-            const width = document.getElementById('width').value;
-            
-            try {
-                const response = await fetch('/generate', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ imageUrl, width }),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const asciiArt = await response.text();
-                asciiOutput.textContent = asciiArt;
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
-        });
-    </script>
+        <footer class="actions">
+            <span id="screen-status" role="status"></span>
+            {% if install_token %}
+                <button id="apply-screensaver" type="button" data-token="{{ install_token }}" disabled>Install fitted artwork</button>
+            {% endif %}
+        </footer>
+    </dialog>
 </body>
 </html>

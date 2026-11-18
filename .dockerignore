@@ -1,10 +1,11 @@
-# Ignore files and directories that are not needed in the Docker image
-.git
-venv
-__pycache__
-*.pyc
-*.pyo
-*.pyd
-*.so
-*.egg-info
-airats.log
+**
+!Dockerfile
+!requirements.txt
+!app.py
+!Main.py
+!templates/
+!templates/**
+!static/
+!static/**
+!images/
+!images/fish.jpg
