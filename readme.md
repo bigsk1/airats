@@ -2,6 +2,10 @@
 
 Turn images and words into ASCII art. Upload or crop a photo, or create lettering from a typed phrase. Then copy the artwork, download a text file, or preview it as a screensaver.
 
+<p align="center">
+  <img src="images/stick.gif" alt="Stick-figure demo: photo to ASCII art, typed words to big lettering, copy, save or set as screensaver" width="800">
+</p>
+
 ## Run locally
 
 Requires Python 3.12 or newer. With [uv](https://docs.astral.sh/uv/) installed, run from the repository root.
